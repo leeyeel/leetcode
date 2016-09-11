@@ -6,51 +6,41 @@ using std::vector;
 class Solution {
     public:
         vector<int> spiralOrder(vector<vector<int> >& matrix) {
+            vector<int>v;
+            if(matrix.empty()) return v;
             int m = matrix.size();
             int n = matrix.at(0).size();
-            vector<int>v;
-            //v.resize(m*n);  
-            v.reserve(m*n);
-            if(m==0) return v;
-            int left=0,right=n-1,top=0,bottom=m-1;
-            int countor=0;
-            while(countor<n*m){
-                for(int i=left;i<right;++i){
-                    v.push_back(matrix[top][i]);
-                    ++countor;
+            int biginX=0,endX=n-1,beginY=0,EndY=m-1;
+            while(true){
+                for(int i=biginX;i<=endX;++i){
+                    v.push_back(matrix[beginY][i]);
                 }
-                left++;
-                for(int j=top;j<bottom;++j){
-                    v.push_back(matrix[j][right]);
-                    ++countor;
-                }
-                top++;
-                for(int k=right;k>=left;--k){
-                    v.push_back(matrix[bottom][k]);
-                    ++countor;
-                }
-                right--;
-                
-                for(int l=bottom;l>=top;--l){
-                    v.push_back(matrix[l][left-1]);
-                    ++countor;
-                }
-                bottom--;
+                if(++beginY>EndY) break;
 
-                std::cout<<"counter is "<<countor<<std::endl;
-
-                if(countor+1==n*m){
-                    v.push_back(n*m);
-                    break;
+                for(int j=beginY;j<=EndY;++j){
+                    v.push_back(matrix[j][endX]);
                 }
+                if(--endX<biginX) break;
+
+                for(int k=endX;k>=biginX;--k){
+                    v.push_back(matrix[EndY][k]);
+                }
+                if(--EndY<beginY) break;
+
+                for(int l=EndY;l>=beginY;--l){
+                    v.push_back(matrix[l][biginX]);
+                }
+                if(++biginX>endX) break;
             }
             return v;
         }
 };
 
 int main(){
-    int n1=3;
-    int n2=4;
+    int n1;
+    int n2;
+    std::cout<<" type row and column..\n";
+    std::cin>>n1>>n2;
     int num=0;
     vector<vector<int> > test(n1,vector<int>(n2));
     for(int i=0;i<n1;++i){
