@@ -1,13 +1,37 @@
+//十进制转12进制
 #include <iostream>
 #include <string>
 #include <cstdio>
+#include <vector>
+#include<algorithm>
 
-char scal();
+void scal(int);
 
 int main(){
-   int num_10;
-   std::cin>>num_10;
-   while(1){
-     num_10 = num_10/12;
-   }
+    int input;
+   std::cin>>input;
+   scal(input);
+   return 0;
+}
+
+void scal(int n){
+    char tmp[2];
+    int c=0;
+    int p=16;
+    std::vector<char> result;
+    while(n){
+        c = n%p;
+        n = n/p;
+        if(c>9){
+            sprintf(tmp,"%c",(char)(c+55));
+        }else{
+            sprintf(tmp,"%d",c);
+        }
+        result.push_back(tmp[0]);
+    }
+    reverse(result.begin(),result.end());
+    for(int i=0;i<result.size();++i){
+        std::cout<<result[i];
+    }
+    std::cout<<"\n";
 }
