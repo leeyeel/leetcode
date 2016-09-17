@@ -1,3 +1,4 @@
+//给出一个时间,输出下一秒的时间 输入输出格式：2014/01/01 01:01:01
 #include <iostream>
 #include <cstdio>
 using namespace std;

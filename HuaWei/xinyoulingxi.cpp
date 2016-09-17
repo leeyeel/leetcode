@@ -1,3 +1,5 @@
+//http://blog.csdn.net/howeverpf/article/details/38470989
+//心有灵犀一点通的题目
 //存在bug,当第一行输入2a时不报错误
 #include <iostream>
 #include <sstream>

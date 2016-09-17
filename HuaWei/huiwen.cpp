@@ -1,3 +1,4 @@
+//寻找最长的回文数，并返回最长回文数的长度
 #include <iostream>
 #include <string>
 #include <algorithm>
