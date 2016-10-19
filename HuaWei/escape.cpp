@@ -2,8 +2,8 @@
 //思路是，如果够用魔法值就直接用魔法值，如果等一秒划算就等一秒，如果等两秒划算就等两秒
 #include <iostream>
 using namespace std;
-int escape(int m,int s,int t){
 
+int escape(int m,int s,int t){
     int distance=0;
     int i=0;
 

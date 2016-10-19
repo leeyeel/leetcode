@@ -3,12 +3,12 @@
 #include <string>
 #include <cstdio>
 #include <vector>
-#include<algorithm>
+#include <algorithm>
 
 void scal(int);
 
 int main(){
-    int input;
+   int input;
    std::cin>>input;
    scal(input);
    return 0;
