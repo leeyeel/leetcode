@@ -102,10 +102,27 @@ void InsertSort(SqList *L){
 }
 
 
+//对顺序表L作希尔排序 
+void ShellSort(SqList *L){
+    int len = L->length;
+    int j=0;
+    for(int gap=len/2;gap>0;gap=gap/2){
+        for(int i=gap+1;i<len+1;++i){
+            L->r[0]=L->r[i];
+            for(j=i-gap;j>0&&L->r[j]>L->r[0];j=j-gap){
+                L->r[j+gap]=L->r[j];
+            }
+            L->r[j+gap]=L->r[0]; //此时j+gap为循环结束时的j-gap,其实就是最后一次循环时的j
+            L->print();
+        }
+    }
+}
+
+
 int main(){
-   //int d[]={9,1,5,8,3,7,4,6,2}; 
+   int d[]={9,1,5,8,3,7,4,6,2}; 
    //int d[]={50,10,90,30,70,40,80,60,20,30};
-    int d[]={9,8,7,6,5,4,3,2,1}; 
+   //int d[]={9,8,7,6,5,4,3,2,1}; 
    
    int N = sizeof(d)/sizeof(int);
    SqList l0,l1,l2,l3,l4,l5,l6,l7,l8,l9,l10;
@@ -137,11 +154,12 @@ int main(){
    std::cout<<"\n直接插入排序:\n";
    InsertSort(&l4);
    l4.print();
-/*
-   printf("希尔排序:\n");
+
+   std::cout<<"\n希尔排序:\n";
    ShellSort(&l5);
-   print(l5);
+   l5.print();
 	
+/*
    printf("堆排序:\n");
    HeapSort(&l6);
    print(l6);
