@@ -118,6 +118,28 @@ void ShellSort(SqList *L){
     }
 }
 
+int Partition(SqList *L,int left,int right){
+    L->r[0]=L->r[right];
+    int i=left-1;
+    for(int j=left;j<right;++j){
+        if(L->r[j]<=L->r[0]){
+            ++i;
+            L->swap(i,j);
+        }
+    }
+    L->swap(i+1,right);
+    return i+1;
+}
+//快速排序 //算法导论上....屌炸天的方法
+void QSort(SqList *L,int left,int right){
+    if(left<right){
+        int pos = Partition(L,left,right);
+        QSort(L,left,pos-1);
+        QSort(L,pos+1,right);
+    }
+}
+
+
 
 int main(){
    int d[]={9,1,5,8,3,7,4,6,2}; 
@@ -179,10 +201,13 @@ int main(){
    printf("改进快速排序:\n");
    QuickSort1(&l10);
    print(l10);
-
 */
-    /*大数据排序*/
-	/* 
+   std::cout<<"\n快速排序:\n";
+   QSort(&l9,1,l9.length);
+   l9.print();
+
+/*
+    大数据排序
 	srand(time(0));  
 	int Max=10000;
 	int d[10000];
@@ -195,6 +220,6 @@ int main(){
 	l0.length=Max;
 	MergeSort(l0);
 	print(l0);
-	*/
+*/
 	return 0;
 }
